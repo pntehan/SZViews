@@ -1,0 +1,11 @@
+{% extends "basic.html" %}
+{% block content %}
+
+    <div style="margin: 0 auto;">
+        <form class="form-inline my-2 my-lg-0" method="POST" action="/studentDo">
+          <input class="form-control mr-sm-2" type="search" placeholder="输入要查看的学生学号" aria-label="Search" name="searchStu">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+{% endblock %}

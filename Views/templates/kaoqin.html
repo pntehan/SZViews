@@ -1,0 +1,63 @@
+{% extends "basic.html" %}
+{% block content %}
+    <div style="width:400px; height:auto; float:left; display:inline">
+        <img src="{{ info['pic'] }}" style="width: 400px" class="img-thumbnail">
+    </div>
+    <div id="container" style="height: 400px; float:left"></div>
+    <script language="JavaScript" charset="UTF-8">
+    var chart = Highcharts.chart('container', {
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: '学生考勤信息饼状图'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '考勤类型占比',
+            data: [
+                {% for key, value in info['data'].items() %}
+                    ['{{ key }}', {{ value }}],
+                {% endfor %}
+            ]
+        }]
+    });
+    </script>
+    <div style="height:auto; float:left; display:inline">
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+                <th scope="col">考勤类型</th>
+                <th scope="col">天数</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for key, value in info['data'].items() %}
+            <tr>
+              <th scope="row">{{ key }}</th>
+              <td>{{ value }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{% endblock %}

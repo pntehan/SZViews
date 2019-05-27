@@ -1,0 +1,64 @@
+{% extends "basic.html" %}
+{% block content %}
+    <div style="width:400px; height:auto; float:left; display:inline">
+        <img src="{{ info['stuPic'] }}" style="width: 400px" class="img-thumbnail">
+    </div>
+    <div style="height:auto; float:left; display:inline">
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">个人信息</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">姓名</th>
+              <td>{{ info['stuinfo']['bf_Name'] }}</td>
+            </tr>
+            <tr>
+              <th scope="row">学号</th>
+              <td>{{ info['stuID'] }}</td>
+            </tr>
+          <tr>
+              <th scope="row">名族</th>
+              <td>{{ info['stuinfo']['bf_nation'] }}</td>
+            </tr>
+          <tr>
+              <th scope="row">班级</th>
+              <td>{{ info['stuinfo']['cla_Name'] }}</td>
+            </tr>
+            <tr>
+              <th scope="row">学期</th>
+              <td>{{ info['stuinfo']['cla_term'] }}</td>
+            </tr>
+          <tr>
+              <th scope="row">家庭类型</th>
+              <td>{{ info['stuinfo']['Bf_ResidenceType'] }}</td>
+            </tr>
+          <tr>
+              <th scope="row">政治情况</th>
+              <td>{{ info['stuinfo']['bf_policy'] }}</td>
+            </tr>
+            <tr>
+              <th scope="row">是否退学</th>
+                {% if info['stuinfo']['bf_leaveSchool'] == '无' %}
+                <td>未被退学</td>
+                {% endif %}
+            </tr>
+          <tr>
+              <th scope="row">住宿情况</th>
+              <td>{{ info['stuinfo']['bf_zhusu'] }}</td>
+            </tr>
+            <tr>
+              <th scope="row">寝室号</th>
+                <td>{{ info['stuinfo']['bf_qinshihao'] }}</td>
+            </tr>
+          <tr>
+              <th scope="row">授课老师</th>
+              <td>{{ info['stuinfo']['teacher'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+{% endblock %}

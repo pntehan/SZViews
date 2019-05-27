@@ -1,0 +1,10 @@
+{% extends "basic.html" %}
+{% block content %}
+    {% for sub in scoreInfo %}
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" href="/{{ stuID }}score{{ sub }}">{{ sub }}</a>
+          </li>
+        </ul>
+    {% endfor %}
+{% endblock %}

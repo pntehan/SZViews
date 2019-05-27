@@ -1,0 +1,88 @@
+{% extends "basic.html" %}
+{% block content %}
+    <div class="alert alert-primary" role="alert">
+      学号为{{ info['stuID'] }}学生的数据分析可视化
+    </div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                  {% if info['stuPic'] == '不存在' %}
+                    <img class="card-img-top" src="/static/image/404.jpg" alt="数据中没有此学生的个人信息">
+                    <p>数据中没有此学生的个人信息</p>
+                  {% else %}
+                <img class="card-img-top" src="{{ info['stuPic'] }}" alt="数据中没有此学生的个人信息">
+                <div class="card-body">
+                  <p class="card-text">学生个人信息画像展示</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="/student-{{ info['stuID'] }}" role="button">查看</a>
+                    </div>
+                    <small class="text-muted">1002</small>
+                  </div>
+                </div>
+                  {% endif %}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                  {% if info['stuPayPic'] == '不存在' %}
+                    <img class="card-img-top" src="/static/image/404.jpg" alt="数据中没有此学生的消费信息">
+                    <p>数据中没有此学生的消费信息</p>
+                  {% else %}
+                <img class="card-img-top" src="{{ info['stuPayPic'] }}" alt="数据中没有此学生的消费信息">
+                <div class="card-body">
+                  <p class="card-text">学生消费信息画像展示</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="/pay-{{ info['stuID'] }}" role="button">查看</a>
+                    </div>
+                    <small class="text-muted">1002</small>
+                  </div>
+                </div>
+                  {% endif %}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                  {% if info['stuAttencePic'] == '不存在' %}
+                    <img class="card-img-top" src="/static/image/404.jpg" alt="数据中没有此学生的考勤信息">
+                    <p>数据中没有此学生的考勤信息</p>
+                  {% else %}
+                <img class="card-img-top" src="{{ info['stuAttencePic'] }}" alt="数据中没有此学生的考勤信息">
+                <div class="card-body">
+                  <p class="card-text">学生考勤信息画像展示</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="/kaoqin-{{ info['stuID'] }}" role="button">查看</a>
+                    </div>
+                    <small class="text-muted">1002</small>
+                  </div>
+                </div>
+                  {% endif %}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                  {% if info['stuAttencePic'] == '不存在' %}
+                    <img class="card-img-top" src="/static/image/404.jpg" alt="数据中没有此学生的考勤信息">
+                    <p>数据中没有此学生的考勤信息</p>
+                  {% else %}
+                <img class="card-img-top" src="{{ info['stuAttencePic'] }}" alt="数据中没有此学生的考勤信息">
+                <div class="card-body">
+                  <p class="card-text">学生成绩趋势分析</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a class="btn btn-primary" href="/score-{{ info['stuID'] }}" role="button">查看</a>
+                    </div>
+                    <small class="text-muted">1002</small>
+                  </div>
+                </div>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

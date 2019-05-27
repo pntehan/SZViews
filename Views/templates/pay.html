@@ -1,0 +1,82 @@
+{% extends "basic.html" %}
+{% block content %}
+    <div style="width:400px; height:auto; float:left; display:inline">
+        <img src="{{ img }}" style="width: 400px" class="img-thumbnail">
+    </div>
+    <div id="container" style="height: 400px; float:left"></div>
+        <script language="JavaScript" charset="UTF-8">
+            var chart = Highcharts.chart('container', {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy'
+            },
+            title: {
+                text: '学生消费数据分析图'
+            },
+            subtitle: {
+                text: '不同颜色代表不同日期'
+            },
+            xAxis: {
+                title: {
+                    enabled: true,
+                    text: '时间'
+                },
+                startOnTick: true,
+                endOnTick: true,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                    text: '消费额'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 400,
+                y: 1,
+                maxHeight:100,
+                floating: true,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                borderWidth: 1
+            },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x} , {point.y} '
+                    }
+                }
+            },
+            series: [
+            {% for day, data in info.items() %}
+            {
+                name: "{{ day }}",
+                color: '{{ data['color'] }}',
+                data:{{ data['data'] }}
+            },
+            {% endfor %}
+            ]
+        });
+        </script>
+    <div style="height: 400px; float:right">
+        <a style="color: #1b6d85">x轴数字是小时加分钟</a>
+    </div>
+{% endblock %}
